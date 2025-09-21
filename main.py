@@ -1,16 +1,13 @@
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
-number = str(input('Введите название и номер счета или карты: '))
-str_date = str(input('Введите дату: '))
+number = str(input("Введите название и номер счета или карты: "))
+str_date = str(input("Введите дату: "))
 
-list_name_account_n =[]
-list_name_account = number.split(' ')
+list_name_account_n = []
+list_name_account = number.split(" ")
 for name in list_name_account:
     if name.isalpha():
         list_name_account_n.append(name)
-print(' '.join(list_name_account_n) + " " + mask_account_card(number))
+print(" ".join(list_name_account_n) + " " + mask_account_card(number))
 
 print(get_date(str_date))
-
-
-
