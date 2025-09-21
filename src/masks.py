@@ -1,5 +1,7 @@
 def get_mask_card_number(card_number: int) -> str:
-    """Функция маскировки номера банковской карты"""
+    """Функция маскировки номера банковской карты
+    :rtype: str
+    """
 
     card_number_str = str(card_number)
     if len(card_number_str) != 16:

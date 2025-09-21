@@ -1,10 +1,18 @@
 
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
+from src.widget import mask_account_card
 
-print(get_mask_card_number(1234567891234561))
+number = str(input('Введите название и номер счета или карты: '))
 
-print(get_mask_account(123456789123456))
+list_name_account_n =[]
+list_name_account = number.split(' ')
+for name in list_name_account:
+    if name.isalpha():
+        list_name_account_n.append(name)
+print(' '.join(list_name_account_n) + " " + mask_account_card(number))
+
+
 
 
 
