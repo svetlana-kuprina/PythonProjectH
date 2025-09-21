@@ -16,3 +16,9 @@ def mask_account_card (account_number:str) ->str:
             account_number_mask = int(account_number[-16:])
             return get_mask_card_number(account_number_mask)
 
+
+def get_date(date_str:str) -> str:
+    """Функция видоизменяет дату в формат ДД.ММ.ГГГГ"""
+
+
+    return date_str[8:10] + '-' + date_str[5:7]+ '-' + date_str[0:4]
