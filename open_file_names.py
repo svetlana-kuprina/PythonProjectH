@@ -44,7 +44,3 @@ def get_en_ru(list_names_cl: list) -> tuple[list[Any], list[Any]]:
         file.write(ru_str)
     return en, ru
 
-
-print(open_file_names("names.txt"))
-
-print(get_en_ru(open_file_names("names.txt")))
