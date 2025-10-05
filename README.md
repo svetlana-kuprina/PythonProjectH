@@ -33,5 +33,11 @@ print(" ".join(list_name_account_n) + " " + mask_account_card(number))
 print(get_date(str_date))
 ```
 
+### Тестирование
+
+Проект покрыт юнит-тестами которые находятся в папке tests. Для их запуска выполните команду:
+```
+pytest --cov=src --cov-report=html
+```
 
 **Проект находится на доработке.
