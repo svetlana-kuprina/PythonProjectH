@@ -32,8 +32,8 @@ def mask_account_card(account_number: str) -> str:
 def get_date(date_str: str) -> str:
     """Функция видоизменяет дату в формат ДД.ММ.ГГГГ"""
     if type(date_str) is int or type(date_str) is float:
-        return 'Не верный формат входных данных'
+        return "Не верный формат входных данных"
     elif len(date_str) != 26:
-        return 'Не верный формат входных данных'
+        return "Не верный формат входных данных"
     else:
         return date_str[8:10] + "-" + date_str[5:7] + "-" + date_str[0:4]
