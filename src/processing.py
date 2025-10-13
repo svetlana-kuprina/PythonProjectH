@@ -22,5 +22,5 @@ def sort_by_date(list_operation_d: List[Dict], sort: bool = True) -> List[Dict]:
 
     for operation in list_operation_d:
         if len(operation["date"]) != 26:
-            return 'Не верный формат входных данных'
+            return "Не верный формат входных данных"
     return sorted(list_operation_d, key=lambda item: datetime.fromisoformat(item["date"]), reverse=sort)
