@@ -9,7 +9,7 @@ def log(filename=''):
             time_start = datetime.now()
             if filename:
                 with open("data/" + filename, 'a+', encoding="utf-8") as file:
-                    time_start_file = 'Старт функции: ' + str(time_start) + "\n"
+                    time_start_file = 'Старт функции: '+ str(help(func)) + str(time_start) + "\n"
                     file.write(time_start_file)
             else:
                 print(f"Старт функции: {time_start}")
@@ -27,9 +27,9 @@ def log(filename=''):
 
                 if filename:
                     with open("data/" + filename, 'a+', encoding="utf-8") as file:
-                        file.write('Error: ' + str(exp) + ' ' + str(datetime.now()) + "\n")
+                        file.write('Error: ' + str(exp) + '\n' + 'Стоп функции: '+str(datetime.now()) + "\n")
                 else:
-                    print(f"Error: {exp}")
+                    print(f"Error: {exp} \nСтоп функции: {str(datetime.now())}")
 
         return wrapper
 
