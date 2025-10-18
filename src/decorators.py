@@ -1,8 +1,8 @@
-from datetime import time, datetime
+from datetime import datetime
 from functools import wraps
 
 
-def log(filename=''):
+def log(filename=""):
     """Декоратор логирует начало и конец выполнения функции, а также ее результаты или возникшие ошибки."""
 
     def decorator(func):
@@ -10,8 +10,8 @@ def log(filename=''):
         def wrapper(*args, **kwargs):
             time_start = datetime.now()
             if filename:
-                with open("log/" + filename, 'a+', encoding="utf-8") as file:
-                    time_start_file = 'Старт функции: ' + str(time_start) + "\n"
+                with open("../src/log/" + filename, "w", encoding="utf-8") as file:
+                    time_start_file = "Старт функции: " + str(time_start) + "\n"
                     file.write(time_start_file)
             else:
                 print(f"Старт функции: {time_start}")
@@ -20,8 +20,8 @@ def log(filename=''):
                 result = func(*args, **kwargs)
                 time_end = datetime.now()
                 if filename:
-                    with open("log/" + filename, 'a+', encoding="utf-8") as file:
-                        time_stop_file = str(func.__name__) + ' ok' + "\n" + 'Стоп функции: ' + str(time_end) + "\n"
+                    with open("../src/log/" + filename, "a+", encoding="utf-8") as file:
+                        time_stop_file = str(func.__name__) + " ok" + "\n" + "Стоп функции: " + str(time_end) + "\n"
                         file.write(time_stop_file)
                 else:
                     print(f"{str(func.__name__)} ok\nСтоп функции: {time_end}")
@@ -29,23 +29,26 @@ def log(filename=''):
 
             except Exception as exp:
                 if filename:
-                    with open("log/" + filename, 'a+', encoding="utf-8") as file:
+                    with open("../src/log/" + filename, "a+", encoding="utf-8") as file:
                         file.write(
-                            str(func.__name__) + ' Error: ' + str(exp) + '.' + ' Inputs: ' + str(args) + ',' + str(
-                                kwargs) + '\n' + 'Стоп функции: ' + str(datetime.now()) + "\n")
+                            str(func.__name__)
+                            + " Error: "
+                            + str(exp)
+                            + "."
+                            + " Inputs: "
+                            + str(args)
+                            + ","
+                            + str(kwargs)
+                            + "\n"
+                            + "Стоп функции: "
+                            + str(datetime.now())
+                            + "\n"
+                        )
                 else:
                     print(
-                        f"{str(func.__name__)} Error: {str(exp)}. Inputs: {str(args)}, {str(kwargs)} \nСтоп функции: {str(datetime.now())}")
+                        f"{str(func.__name__)} Error: {str(exp)}. Inputs: {str(args)}, {str(kwargs)} \nСтоп функции: {str(datetime.now())}"
+                    )
 
         return wrapper
 
     return decorator
-
-
-# if __name__ == '__main__':
-#     @log(filename='mylog.txt')
-#     def my_function(x, y):
-#         return x / y
-#
-#
-#     my_function(1, 1)
