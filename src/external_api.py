@@ -1,11 +1,16 @@
 import json
 import os
-from dotenv import load_dotenv
+from typing import Any
+
 import requests
+from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_external_api(transaction:dict) -> float:
+
+def get_external_api(transaction: dict) -> Any:
+    """Функция принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях. Если транзакция была в
+    USD или EUR, происходит обращение к внешнему API"""
 
     try:
         if transaction["operationAmount"]["currency"]["code"] != "RUB":
@@ -13,9 +18,9 @@ def get_external_api(transaction:dict) -> float:
             from_ = transaction["operationAmount"]["currency"]["code"]
             amount = transaction["operationAmount"]["amount"]
             url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from_}&amount={amount}"
-            headers = {"apikey": os.getenv('APIKEY')}
+            headers = {"apikey": os.getenv("APIKEY")}
             payload = {}
-            response = requests.get(url, headers=headers, data = payload)
+            response = requests.get(url, headers=headers, data=payload)
 
             result = response.text
             result = json.loads(result)
@@ -28,25 +33,3 @@ def get_external_api(transaction:dict) -> float:
         raise e
 
     return transaction["operationAmount"]["amount"]
-
-# tr = {
-#     "id": 441945886,
-#     "state": "EXECUTED",
-#     "date": "2019-08-26T10:50:58.294041",
-#     "operationAmount": {
-#       "amount": "10000.00",
-#       "currency": {
-#         "name": "евр.",
-#         "code": "EUR"
-#       }}}
-# print(get_external_api(tr))
-
-#
-# #
-#
-# {'success': True, 'query':
-#     {'from': 'EUR', 'to': 'RUB', 'amount': 10000},
-#  'info': {'timestamp': 1761417844, 'rate': 92.569097},
-#  'date': '2025-10-25', 'result': 925690.97})
-
-

@@ -17,8 +17,3 @@ def get_json_file(json_file: str) -> list[dict]:
         data_file = []
 
     return data_file
-
-
-if __name__ == "__main__":
-    p = '../data/operations.json'
-    print(get_json_file(p))
