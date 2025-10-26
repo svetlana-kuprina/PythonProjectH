@@ -7,38 +7,42 @@ load_dotenv()
 
 def get_external_api(transaction:dict) -> float:
 
-    if transaction["operationAmount"]["currency"]["code"] != "RUB":
-        to = "RUB"
-        from_ = transaction["operationAmount"]["currency"]["code"]
-        amount = transaction["operationAmount"]["amount"]
-        url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from_}&amount={amount}"
-        headers = {
-            "apikey": os.getenv('APIKEY')
-        }
-        payload = {}
+    try:
+        if transaction["operationAmount"]["currency"]["code"] != "RUB":
+            to = "RUB"
+            from_ = transaction["operationAmount"]["currency"]["code"]
+            amount = transaction["operationAmount"]["amount"]
+            url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from_}&amount={amount}"
+            headers = {"apikey": os.getenv('APIKEY')}
+            payload = {}
+            response = requests.get(url, headers=headers, data = payload)
 
-        response = requests.request("GET", url, headers=headers, data = payload)
-
-        result = response.text
-        result = json.loads(result)
-        return result["result"]
+            result = response.text
+            result = json.loads(result)
+            return result["result"]
+    except ConnectionError:
+        raise ConnectionError("Connection error")
+    except KeyError:
+        raise KeyError("Key error")
+    except Exception as e:
+        raise e
 
     return transaction["operationAmount"]["amount"]
 
-tr = {
-    "id": 441945886,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "10000.00",
-      "currency": {
-        "name": "евр.",
-        "code": "EUR"
-      }}}
-print(get_external_api(tr))
-
+# tr = {
+#     "id": 441945886,
+#     "state": "EXECUTED",
+#     "date": "2019-08-26T10:50:58.294041",
+#     "operationAmount": {
+#       "amount": "10000.00",
+#       "currency": {
+#         "name": "евр.",
+#         "code": "EUR"
+#       }}}
+# print(get_external_api(tr))
 
 #
+# #
 #
 # {'success': True, 'query':
 #     {'from': 'EUR', 'to': 'RUB', 'amount': 10000},
