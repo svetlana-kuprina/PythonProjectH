@@ -24,7 +24,7 @@ def get_external_api(transaction: dict) -> Any:
 
             result = response.text
             result = json.loads(result)
-            return result["result"]
+            return float(result["result"])
     except ConnectionError:
         raise ConnectionError("Connection error")
     except KeyError:
@@ -32,4 +32,39 @@ def get_external_api(transaction: dict) -> Any:
     except Exception as e:
         raise e
 
-    return transaction["operationAmount"]["amount"]
+    return float(transaction["operationAmount"]["amount"])
+
+tr = {
+    "id": 441945886,
+    "state": "EXECUTED",
+    "date": "2019-08-26T10:50:58.294041",
+    "operationAmount": {
+      "amount": "31957.58",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Maestro 1596837868705199",
+    "to": "Счет 64686473678894779589"
+  }
+tr2 = {
+    "id": 441945886,
+    "state": "EXECUTED",
+    "date": "2019-08-26T10:50:58.294041",
+    "operationAmount": {
+      "amount": "1000.00",
+      "currency": {
+        "name": "евр.",
+        "code": "EUR"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Maestro 1596837868705199",
+    "to": "Счет 64686473678894779589"
+  }
+print(get_external_api(tr))
+print(type(get_external_api(tr)))
+print(get_external_api(tr2))
+print(type(get_external_api(tr2)))
