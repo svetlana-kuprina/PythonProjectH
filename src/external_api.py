@@ -24,7 +24,7 @@ def get_external_api(transaction: dict) -> Any:
 
             result = response.text
             result = json.loads(result)
-            return result["result"]
+            return float(result["result"])
     except ConnectionError:
         raise ConnectionError("Connection error")
     except KeyError:
@@ -32,4 +32,4 @@ def get_external_api(transaction: dict) -> Any:
     except Exception as e:
         raise e
 
-    return transaction["operationAmount"]["amount"]
+    return float(transaction["operationAmount"]["amount"])
