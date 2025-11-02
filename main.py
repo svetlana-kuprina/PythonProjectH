@@ -1,4 +1,3 @@
-from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
 
 number = str(input("Введите название и номер счета или карты: "))
