@@ -46,7 +46,8 @@ def log(filename=""):
                         )
                 else:
                     print(
-                        f"{str(func.__name__)} Error: {str(exp)}. Inputs: {str(args)}, {str(kwargs)} \nСтоп функции: {str(datetime.now())}"
+                        f"{str(func.__name__)} Error: {str(exp)}. Inputs: {str(args)}, {str(kwargs)} \n"
+                        f"Стоп функции: {str(datetime.now())}"
                     )
 
         return wrapper
