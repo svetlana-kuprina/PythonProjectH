@@ -26,7 +26,8 @@ def transaction_descriptions(operation: List[Dict]) -> Generator:
 
 
 def card_number_generator(start: int = 1, stop: int = 9999999999999999) -> Generator:
-    """Функция генератор, который выдает номера банковских карт в формате ХXXX XXXX XXXX XXXX, где X  — цифра номера карты.
+    """Функция генератор, который выдает номера банковских карт в формате ХXXX XXXX XXXX XXXX,
+    где X  — цифра номера карты.
     Генератор может сгенерировать номера карт в заданном диапазоне от 0000 0000 0000 0001 до 9999 9999 9999 9999."""
 
     for number in range(start, stop + 1):
