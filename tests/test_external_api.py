@@ -36,8 +36,8 @@ def test_get_external_api(mock_request_get):
 
     mock_response = Mock()
     mock_response.status_code = 200
-    mock_response.text = """{"success": true, "query": {"from": "EUR", "to": "RUB", "amount": 10000},"info": 
-    {"timestamp": 1761461044, "rate": 92.569097}, "date": "2025-10-26", "result": 925690.97}"""
+    mock_response.text = """{"success": true, "query": {"from": "EUR", "to": "RUB", "amount": 10000},
+    "info": {"timestamp": 1761461044, "rate": 92.569097}, "date": "2025-10-26", "result": 925690.97}"""
     mock_request_get.return_value = mock_response
     tr = {
         "id": 441945886,
