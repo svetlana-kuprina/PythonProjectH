@@ -1403,7 +1403,7 @@
   },
   {
     "id": 179194306,
-    "state": "EXECUTED",
+    "state": "PENDING",
     "date": "2019-05-19T12:51:49.023880",
     "operationAmount": {
       "amount": "6381.58",
@@ -1418,7 +1418,7 @@
   },
   {
     "id": 27192367,
-    "state": "CANCELED",
+    "state": "PENDING",
     "date": "2018-12-24T20:16:18.819037",
     "operationAmount": {
       "amount": "991.49",

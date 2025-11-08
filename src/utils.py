@@ -36,3 +36,4 @@ def get_json_file(json_file: str) -> list[dict]:
 
     logger.info("Данные успешно прочитаны с JSON-файла")
     return data_file
+
