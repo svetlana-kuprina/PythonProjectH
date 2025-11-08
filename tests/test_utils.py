@@ -5,7 +5,7 @@ from unittest.mock import patch
 @patch("builtins.open", create=True)
 def test_get_json_file(mock_open):
     """Тест функции get_json_file принимает на вход путь до JSON-файла и возвращает список словарей
-     с данными о финансовых транзакциях. Используется Mock и patch"""
+    с данными о финансовых транзакциях. Используется Mock и patch"""
 
     mock_file = mock_open.return_value.__enter__.return_value
     mock_file.read.return_value = """[{"id": 441945886, "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041",
