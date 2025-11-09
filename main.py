@@ -100,7 +100,7 @@ if number == '1':
     list_operation_state = filter_by_state(list_operation, status)
 
     if data_sort == 'да':
-        if data_sort_reverse == 'по убыванию':
+        if data_sort_reverse == 'по возрастанию':
             list_operation_state = sort_by_date(list_operation_state, False)
         else:
             list_operation_state = sort_by_date(list_operation_state)
@@ -143,7 +143,7 @@ elif number == '2':
     list_operation = read_csv(csv_direct)
     list_operation_state = filter_by_state(list_operation, status)
     if data_sort == 'да':
-        if data_sort_reverse == 'по убыванию':
+        if data_sort_reverse == 'по возрастанию':
             list_operation_state = sort_by_date(list_operation_state, False)
         else:
             list_operation_state = sort_by_date(list_operation_state)
@@ -181,10 +181,9 @@ elif number == '2':
 else:
     excel_direct = 'data/transactions_excel.xlsx'
     list_operation = read_excel(excel_direct)
-    print(list_operation)
     list_operation_state = filter_by_state(list_operation, status)
     if data_sort == 'да':
-        if data_sort_reverse == 'по убыванию':
+        if data_sort_reverse == 'по возрастанию':
             list_operation_state = sort_by_date(list_operation_state, False)
         else:
             list_operation_state = sort_by_date(list_operation_state)

@@ -18,11 +18,11 @@ def get_mask_card_number(card_number: int) -> str:
 
     if type(card_number) is str:
         logger.error(f"Номер карты введен неверно {card_number}. Содержит буквы")
-        return "Номер карты введен неверно.Введите 16 цифр Вашей карты, номер не может содержать буквы"
+        return f"Номер карты введен неверно {card_number}.Введите 16 цифр Вашей карты, номер не может содержать буквы"
     card_number_str = str(card_number)
     if len(card_number_str) != 16:
         logger.error(f"Номер карты введен неверно {card_number}. Номер должен содержать 16 цифр")
-        return "Номер карты введен неверно.Введите 16 цифр Вашей карты"
+        return f"Номер карты введен неверно {card_number}.Введите 16 цифр Вашей карты"
     else:
         card_number_now = (
             card_number_str[0:4]
