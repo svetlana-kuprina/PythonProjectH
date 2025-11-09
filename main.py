@@ -221,7 +221,7 @@ elif number == "2":
     if val_yn == "да":
         len_list_operation = []
         for item in list_operation_state:
-            if item["operationAmount"]["currency"]["code"] == "RUB":
+            if item["currency_code"] == "RUB":
                 len_list_operation.append(item)
         if not len_list_operation:
             print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
@@ -241,15 +241,15 @@ elif number == "2":
         if len(list_operation_state) == 0:
             print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
         print(f"Всего банковских операций в выборке: {len(list_operation_state)}")
-    for item in list_operation_state:
-        if item["description"] == "Открытие вклада":
-            print(f"{get_date(item['date'])} {item['description']}")
-            print(f"{mask_account_card(item['to'])}")
-            print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
-        else:
-            print(f"{get_date(item['date'])} {item['description']}")
-            print(f"{mask_account_card(item['from'])} -> {mask_account_card(item['to'])}")
-            print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
+        for item in list_operation_state:
+            if item["description"] == "Открытие вклада":
+                print(f"{get_date(item['date'])} {item['description']}")
+                print(f"{mask_account_card(item['to'])}")
+                print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
+            else:
+                print(f"{get_date(item['date'])} {item['description']}")
+                print(f"{mask_account_card(item['from'])} -> {mask_account_card(item['to'])}")
+                print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
 
 else:
     excel_direct = "data/transactions_excel.xlsx"
@@ -267,7 +267,7 @@ else:
     if val_yn == "да":
         len_list_operation = []
         for item in list_operation_state:
-            if item["operationAmount"]["currency"]["code"] == "RUB":
+            if item["currency_code"] == "RUB":
                 len_list_operation.append(item)
         if not len_list_operation:
             print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
@@ -287,12 +287,12 @@ else:
         if len(list_operation_state) == 0:
             print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
         print(f"Всего банковских операций в выборке: {len(list_operation_state)}")
-    for item in list_operation_state:
-        if item["description"] == "Открытие вклада":
-            print(f"{get_date(item['date'])} {item['description']}")
-            print(f"{mask_account_card(item['to'])}")
-            print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
-        else:
-            print(f"{get_date(item['date'])} {item['description']}")
-            print(f"{mask_account_card(item['from'])} -> {mask_account_card(item['to'])}")
-            print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
+        for item in list_operation_state:
+            if item["description"] == "Открытие вклада":
+                print(f"{get_date(item['date'])} {item['description']}")
+                print(f"{mask_account_card(item['to'])}")
+                print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
+            else:
+                print(f"{get_date(item['date'])} {item['description']}")
+                print(f"{mask_account_card(item['from'])} -> {mask_account_card(item['to'])}")
+                print(f'Сумма : {item["amount"]} {item["currency_name"]}\n')
