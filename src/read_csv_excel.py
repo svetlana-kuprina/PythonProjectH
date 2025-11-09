@@ -1,5 +1,5 @@
 import csv
-from typing import Hashable, Any
+from typing import Any, Hashable
 
 import pandas as pd
 

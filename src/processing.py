@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import Dict, List
 
 
@@ -14,9 +13,9 @@ def filter_by_state(list_operation: List[Dict], state: str = "EXECUTED") -> List
     for item in list_operation:
         if item == {}:
             continue
-        if type(item['state']) != str:
+        if type(item["state"]) is not str:
             continue
-        if item['state'] in state:
+        if item["state"] in state:
             new_list.append(item)
     return new_list
 
@@ -26,6 +25,6 @@ def sort_by_date(list_operation_d: List[Dict], sort: bool = True) -> List[Dict]:
     (по умолчанию — убывание). Функция должна возвращать новый список, отсортированный по дате"""
 
     # for operation in list_operation_d:
-        # if len(operation["date"]) != 26:
-        #     return "Не верный формат входных данных"
+    # if len(operation["date"]) != 26:
+    #     return "Не верный формат входных данных"
     return sorted(list_operation_d, key=lambda item: item["date"], reverse=sort)
