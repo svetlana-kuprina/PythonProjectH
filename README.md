@@ -41,24 +41,8 @@ card_number_generator - который выдает номера банковс�
 
 ### Использование
 
-Для запуска модулей используйте main.py.
-Активны функции filter_by_state и sort_by_date модуля processing.py
+Для запуска используйте main.py.
 
-Для активации других модулей снимите комментарий в модуле main.py,
-например так:
-```
-number = str(input("Введите название и номер счета или карты: "))
-str_date = str(input("Введите дату: "))
-
-list_name_account_n = []
-list_name_account = number.split(" ")
-for name in list_name_account:
-    if name.isalpha():
-        list_name_account_n.append(name)
-print(" ".join(list_name_account_n) + " " + mask_account_card(number))
-
-print(get_date(str_date))
-```
 
 ### Тестирование
 
@@ -67,4 +51,4 @@ print(get_date(str_date))
 pytest --cov=src --cov-report=html
 ```
 
-**Проект находится на доработке.
+

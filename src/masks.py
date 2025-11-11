@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 
 logger = logging.getLogger("masks")
 logger.setLevel(logging.DEBUG)
@@ -10,13 +11,14 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
 
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """Функция маскировки номера банковской карты
     :type card_number: int
     :rtype: str
     """
 
-    if type(card_number) is str:
+    ser = re.search("[a-z]", card_number, flags=re.IGNORECASE)
+    if ser is not None:
         logger.error(f"Номер карты введен неверно {card_number}. Содержит буквы")
         return "Номер карты введен неверно.Введите 16 цифр Вашей карты, номер не может содержать буквы"
     card_number_str = str(card_number)
@@ -38,10 +40,11 @@ def get_mask_card_number(card_number: int) -> str:
     return card_number_mask
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: str) -> str:
     """Функция маскировки номера банковского счета"""
 
-    if type(account_number) is str:
+    ser = re.search("[a-z]", account_number, flags=re.IGNORECASE)
+    if ser is not None:
         logger.error(f"Номер счета введен неверно {account_number}. Содержит буквы")
         return "Номер счета введен неверно.Введите 20 цифр Вашего счета, номер не может содержать буквы"
     account_number_str = str(account_number)

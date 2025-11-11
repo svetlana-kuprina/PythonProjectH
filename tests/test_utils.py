@@ -1,5 +1,6 @@
-from src.utils import get_json_file
 from unittest.mock import patch
+
+from src.utils import get_json_file
 
 
 @patch("builtins.open", create=True)
