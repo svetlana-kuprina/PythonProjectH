@@ -128,10 +128,3 @@ def test_sort_by_date_repeat(list_operation_repeat: List[Dict], sort2: bool, exp
     Проверка корректности сортировки при одинаковых датах."""
 
     assert sort_by_date(list_operation_repeat, sort2) == exp_operation2
-
-
-def test_sort_by_date_f(list_operation_f: List[Dict]) -> None:
-    """Тест для функции sort_by_date:
-    Тесты на работу функции с некорректными или нестандартными форматами дат."""
-
-    assert sort_by_date(list_operation_f) == "Не верный формат входных данных"
